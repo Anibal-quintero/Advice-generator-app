@@ -18,7 +18,7 @@ body {
     width: 34em;
     height: 21em;
     position: relative;
-    padding: 1.5em;
+    padding: 1.5em 2.5em;
     display: flex;
     flex-direction: column;
     justify-content: center;
