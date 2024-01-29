@@ -1,0 +1,24 @@
+# Frontend Mentor Challenge - [Advice generator app]
+
+Este es mi proyecto como solución al desafío de Frontend Mentor llamado "[Advice generator app]". 
+
+## Descripción
+
+- Generación de un consejo aleatorio al hacer clic en un botón.
+- Interfaz que se ajusta al diseño proporcionado por Frontend Mentor.
+- Uso de la API de Advice Slip para obtener los consejos.
+
+## Tecnologías Utilizadas
+
+- HTML
+- CSS
+- JavaScript
+
+## Enlaces
+
+- [Ver la solución en vivo](https://tu-solucion-en-vivo.com)
+- [Desafío en Frontend Mentor](https://www.frontendmentor.io/challenges/advice-generator-app-QdUG-13db)
+
+## Agradecimientos
+
+Agradezco a Frontend Mentor por proporcionar este desafío. ¡Fue una experiencia de aprendizaje increíble!
