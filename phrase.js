@@ -1,34 +1,30 @@
-document.addEventListener('DOMContentLoaded', function () {
-  // Código que se ejecutará cuando el DOM esté completamente cargado
-  obtenerConsejoAleatorio();
+document.addEventListener("DOMContentLoaded", function () {
+  const adviceButton = document.querySelector(".btn");
+  const adviceTextContainer = document.querySelector(".p");
+  const adviceIdContainer = document.querySelector(".adviceNumber");
+
+  fetchRandomAdvice();
+
+  adviceButton.addEventListener("click", fetchRandomAdvice);
+
+  async function fetchRandomAdvice() {
+    try {
+      adviceTextContainer.textContent = "Loading...";
+
+      const apiUrl = "https://api.adviceslip.com/advice";
+      const response = await fetch(apiUrl);
+
+      if (!response.ok) {
+        throw new Error("Error al obtener el consejo");
+      }
+
+      const data = await response.json();
+
+      adviceIdContainer.textContent = `#${data.slip.id}`;
+      adviceTextContainer.textContent = `“${data.slip.advice}”`;
+    } catch (error) {
+      console.error(error);
+      adviceTextContainer.textContent = "Error al cargar el consejo. Intenta nuevamente.";
+    }
+  }
 });
-
-// Accede al botón y agrega un evento de clic
-const btn = document.querySelector('.btn');
-btn.addEventListener('click', obtenerConsejoAleatorio);
-
-// Accede al elemento del DOM donde deseas mostrar la frase
-const contenedorFrase = document.querySelector('.p');
-let loading;
-
-function obtenerConsejoAleatorio() {
-  // Genera un número aleatorio
-  let number = obtenerNumeroAleatorio();
-
-  // Muestra el número aleatorio en el header
-  const deviceNumber = document.querySelector('.adviceNumber');
-  deviceNumber.textContent = `#${number}`;
-
-  const apiUrl = `https://api.adviceslip.com/advice/${number}`;
-  contenedorFrase.textContent = 'Loading...'
-  fetch(apiUrl)
-    .then(res => { return res.json() })
-    .then(data => loading = data.slip.advice)
-    .catch(error => console.log(error))
-  .finally(() => contenedorFrase.textContent = `“${loading}”`)
-}
-
-// Función para obtener un número aleatorio entre 1 y 224
-function obtenerNumeroAleatorio() {
-  return Math.floor(Math.random() * 224) + 1;
-}
